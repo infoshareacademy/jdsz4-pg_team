@@ -1,6 +1,7 @@
 # jdsz4-pg_team
 
-# Dataset: https://www.kaggle.com/worldbank/world-development-indicators
+# Dataset: 
+https://www.kaggle.com/worldbank/world-development-indicators
 
 # Opis projektu:
 
