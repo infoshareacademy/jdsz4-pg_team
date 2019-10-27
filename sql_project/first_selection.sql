@@ -5,8 +5,8 @@ select C.Region, I.CountryName, S.Topic, S.IndicatorName, I.Year, I.Value
         join Country C on I.CountryCode = C.CountryCode
      where year >= '1990'
                and year <= '2010'
-        and (region is 'South Asia'
-            or region is 'East Asia & Pacific')
+        and (region = 'South Asia'
+            or region = 'East Asia & Pacific')
                and (topic like 'Economic Policy & Debt:%'
                 or topic like 'Environ%'
                 or Topic like 'Health%'
