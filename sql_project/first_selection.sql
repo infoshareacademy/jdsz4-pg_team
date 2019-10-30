@@ -1,3 +1,9 @@
+/* We decided to check changes in different indicators for two regions:
+- 'South Asia' and 'East Asia & Pacific'
+- in period from 1990 to 2010 (since number of indicators below 1990 drops fast)
+- for topics related to economy, health, environment and infrastructure.
+*/
+
 create table first_selection as
 select C.Region, I.CountryName, S.Topic, S.IndicatorName, I.Year, I.Value
     from Indicators I
