@@ -1,0 +1,51 @@
+ilosc,indicatorname,topic
+903,"Population, total",Health: Population: Structure
+902,Population growth (annual %),Health: Population: Dynamics
+891,"Incidence of tuberculosis (per 100,000 people)",Health: Risk factors
+841,"Tuberculosis case detection rate (%, all forms)",Health: Disease prevention
+826,"Birth rate, crude (per 1,000 people)",Health: Population: Dynamics
+822,"Death rate, crude (per 1,000 people)",Health: Population: Dynamics
+812,"Improved water source, urban (% of urban population with access)",Health: Disease prevention
+811,Improved water source (% of population with access),Health: Disease prevention
+804,"Life expectancy at birth, female (years)",Health: Mortality
+804,"Life expectancy at birth, total (years)",Health: Mortality
+804,"Fertility rate, total (births per woman)",Health: Reproductive health
+804,"Life expectancy at birth, male (years)",Health: Mortality
+798,"Survival to age 65, female (% of cohort)",Health: Mortality
+798,"Age dependency ratio, old (% of working-age population)",Health: Population: Dynamics
+798,Age dependency ratio (% of working-age population),Health: Population: Dynamics
+798,"Population, female (% of total)",Health: Population: Structure
+798,"Age dependency ratio, young (% of working-age population)",Health: Population: Dynamics
+798,Population ages 65 and above (% of total),Health: Population: Structure
+798,"Survival to age 65, male (% of cohort)",Health: Mortality
+798,"Adolescent fertility rate (births per 1,000 women ages 15-19)",Health: Reproductive health
+797,"Mortality rate, adult, female (per 1,000 female adults)",Health: Mortality
+797,"Mortality rate, adult, male (per 1,000 male adults)",Health: Mortality
+794,"Improved sanitation facilities, urban (% of urban population with access)",Health: Disease prevention
+792,Improved sanitation facilities (% of population with access),Health: Disease prevention
+790,"Improved water source, rural (% of rural population with access)",Health: Disease prevention
+778,"Improved sanitation facilities, rural (% of rural population with access)",Health: Disease prevention
+756,Number of neonatal deaths,Health: Mortality
+756,Number of infant deaths,Health: Mortality
+756,"Mortality rate, neonatal (per 1,000 live births)",Health: Mortality
+756,"Mortality rate, infant (per 1,000 live births)",Health: Mortality
+756,Number of under-five deaths,Health: Mortality
+744,"Immunization, measles (% of children ages 12-23 months)",Health: Disease prevention
+744,"Immunization, DPT (% of children ages 12-23 months)",Health: Disease prevention
+714,Prevalence of anemia among pregnant women (%),Health: Nutrition
+714,Prevalence of anemia among children (% of children under 5),Health: Nutrition
+714,Prevalence of anemia among non-pregnant women (% of women ages 15-49),Health: Nutrition
+693,Number of maternal deaths,Health: Reproductive health
+693,"Maternal mortality ratio (modeled estimate, per 100,000 live births)",Health: Reproductive health
+693,Lifetime risk of maternal death (%),Health: Reproductive health
+693,Lifetime risk of maternal death (1 in: rate varies by country),Health: Reproductive health
+644,Tuberculosis treatment success rate (% of new cases),Health: Disease prevention
+548,Out-of-pocket health expenditure (% of total expenditure on health),Health: Health services
+548,Out-of-pocket health expenditure (% of private expenditure on health),Health: Health services
+548,"Health expenditure, total (% of GDP)",Health: Health services
+548,"Health expenditure, public (% of total health expenditure)",Health: Health services
+548,"Health expenditure, public (% of government expenditure)",Health: Health services
+548,"Health expenditure, public (% of GDP)",Health: Health services
+548,"Health expenditure, private (% of GDP)",Health: Health services
+548,"Health expenditure per capita, PPP (constant 2011 international $)",Health: Health services
+548,Health expenditure per capita (current US$),Health: Health services
