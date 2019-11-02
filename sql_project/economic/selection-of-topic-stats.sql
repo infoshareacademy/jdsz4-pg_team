@@ -43,7 +43,7 @@ where topic like 'Econ%' and
       topic != 'Economic Policy & Debt: National accounts: US$ at constant 2005 prices: Expenditure on GDP' and
       topic != 'Economic Policy & Debt: National accounts: Local currency at current prices: Value added' and
       topic != 'Economic Policy & Debt: Purchasing power parity' and
-      topic != 'Economic Policy & Debt: National accounts: US$ at current prices: Aggregate indicators' and
+---      topic != 'Economic Policy & Debt: National accounts: US$ at current prices: Aggregate indicators' and
       topic != 'Economic Policy & Debt: National accounts: Adjusted savings & income' and
       topic != 'Economic Policy & Debt: Balance of payments: Current account: Transfers' and
       topic != 'Economic Policy & Debt: National accounts: Local currency at constant prices: Expenditure on GDP' and
