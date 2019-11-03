@@ -68,3 +68,25 @@ select countryname,
        avg(case when indicatorname like 'Population, total' then Value end) stddev_to_avg_population from first_selection
 group by countryname
 order by avg_pop desc;
+
+
+--Adding info for different countries and chosen indicators
+/*
+To add basic statistics to indicator table, include following script to join properties
+extracted from first_selection.
+ */
+select * from population_years_full
+left join
+(select countryname,
+       avg(case when indicatorname like 'Population, total' then Value end)::int avg_pop,
+       min(case when indicatorname like 'Population, total' then Value end) min_pop,
+       max(case when indicatorname like 'Population, total' then Value end) max_pop,
+       (max(case when indicatorname like 'Population, total' then Value end) -
+       min(case when indicatorname like 'Population, total' then Value end))
+           / max(case when indicatorname like 'Population, total' then Value end) *100
+       pop_diff_procent,
+       stddev(case when indicatorname like 'Population, total' then Value end)::int std_dev,
+       stddev(case when indicatorname like 'Population, total' then Value end)::numeric /
+       avg(case when indicatorname like 'Population, total' then Value end) stddev_to_avg_population from first_selection
+group by countryname
+order by countryname) additional_info on countryname = "CountryName";
