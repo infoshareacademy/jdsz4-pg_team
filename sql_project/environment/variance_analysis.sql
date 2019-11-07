@@ -91,7 +91,7 @@ order by 6 desc
 
 --CO2 emissions are growing rapidly for the Asian countries
 
-select countryname,
+select countryname, IndicatorName,
     avg(Value),
     min(Value) ,
     max(Value) ,
@@ -102,6 +102,45 @@ select countryname,
     variance(value)
 from environment_selection
 where IndicatorName ilike 'CO2%'
-group by 1
+group by 2,1
 having ( max(Value) - min(Value) ) / max(case when Value != 0 then Value end) notnull
 order by 7 desc
+
+--the emissions grew over 70% for 113 of records, that is 'country - indicator' pairs
+
+select count(*)
+    from
+        (select countryname, IndicatorName,
+            avg(Value),
+            min(Value) ,
+            max(Value) ,
+            ( max(Value) - min(Value) ) as difference,
+            ( max(Value) - min(Value) ) / max(case when Value != 0 then Value end),
+                                                --used case not to have situations with division by zero
+            stddev(Value),
+            variance(value)
+        from environment_selection
+        where IndicatorName ilike 'CO2%'
+        group by 2,1
+        having ( max(Value) - min(Value) ) / max(case when Value != 0 then Value end) notnull
+           and ( max(Value) - min(Value) ) / max(case when Value != 0 then Value end) > 0.7
+        order by 7 desc) as CO2
+
+----------------------------
+create table support1 as
+select countryname, IndicatorName,
+            avg(Value),
+            min(Value) ,
+            max(Value) ,
+            ( max(Value) - min(Value) ) as difference,
+            ( max(Value) - min(Value) ) / max(case when Value != 0 then Value end),
+                                                --used case not to have situations with division by zero
+            stddev(Value),
+            variance(value)
+        from environment_selection
+        where IndicatorName ilike 'CO2%'
+        group by 2,1
+        having ( max(Value) - min(Value) ) / max(case when Value != 0 then Value end) notnull
+        order by 7 desc
+
+--created supporting table
