@@ -36,3 +36,14 @@ where CountryName = 'China' -- country
 group by 1, 2
 ----------------------
 
+select countryname, IndicatorName,
+       avg(Value),
+       min(Value) ,
+       max(Value) ,
+        ( max(Value) -min(Value) ) difference,
+       stddev(Value),
+       variance(value)
+from environment_selection
+--where IndicatorName ilike 'Electricity production from renewable sources, excluding hydroelectric (kWh)'
+group by 1, 2
+order by 5 desc
