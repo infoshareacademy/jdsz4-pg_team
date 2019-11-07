@@ -75,6 +75,9 @@ order by avg_pop desc;
 To add basic statistics to indicator table, include following script to join properties
 extracted from first_selection.
  */
+
+-- Checking % diffrence in population amount
+
 select * from population_years_full
 left join
 (select countryname,
@@ -88,5 +91,65 @@ left join
        stddev(case when indicatorname like 'Population, total' then Value end)::int std_dev,
        stddev(case when indicatorname like 'Population, total' then Value end)::numeric /
        avg(case when indicatorname like 'Population, total' then Value end) stddev_to_avg_population from first_selection
-group by countryname
-order by countryname) additional_info on countryname = "CountryName";
+group by countryname) additional_info on countryname = "CountryName"
+order by pop_diff_procent desc ;
+
+/*
+Population % biggest rise top 5:
+- Afganistan (57%)
+- Solomon Islands (41%)
+- Maldives (40.5%)
+- Singapore (40%)
+- Papua New Guinea (39%)
+
+Smallest % rise:
+- Japan (3.5%)
+- Small islands (Tovalu, Tonga, Marshall Islands, Micronesia, Samoa)
+- Korea (South) 13%
+- China (15%)
+- Thailand (15%)
+
+Conclusions:
+- Japan has big population problem despite high GDP
+- Small islands are having problems to keep their inhabitants.
+- China is controlling their population with taxes.
+- Afghanistan has the biggest rise thanks to their culture?
+- Solomon Islands, Maldives and rising - why are their in opposite to small islands?
+- Singapore is expanding fast due to high tech evolution.
+- India's % rise is only about 30%, but so much different when we are looking at numbers. :)
+
+*/
+
+-- Checking raw numbers for population difference
+select * from population_years_full
+left join
+(select countryname,
+       avg(case when indicatorname like 'Population, total' then Value end)::int avg_pop,
+       min(case when indicatorname like 'Population, total' then Value end) min_pop,
+       max(case when indicatorname like 'Population, total' then Value end) max_pop,
+       (max(case when indicatorname like 'Population, total' then Value end) -
+       min(case when indicatorname like 'Population, total' then Value end))
+       pop_diff_raw,
+       stddev(case when indicatorname like 'Population, total' then Value end)::int std_dev,
+       stddev(case when indicatorname like 'Population, total' then Value end)::numeric /
+       avg(case when indicatorname like 'Population, total' then Value end) stddev_to_avg_population from first_selection
+group by countryname) additional_info on countryname = "CountryName"
+order by pop_diff_raw desc ;
+
+/*
+ Top 5 biggest rise:
+ - India
+ - China
+ - Pakistan
+ - Indonesia
+ - Bangladesh
+
+ Top 5 lowest:
+ - Tuvalu
+ - Marshall Islands
+ - Palau
+ - Tonga
+ - Micronesia
+
+ Sounds familiar?
+ */
