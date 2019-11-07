@@ -91,7 +91,7 @@ order by 6 desc
 
 --CO2 emissions are growing rapidly for the Asian countries
 
-select countryname, IndicatorName,
+select countryname,
     avg(Value),
     min(Value) ,
     max(Value) ,
@@ -102,6 +102,6 @@ select countryname, IndicatorName,
     variance(value)
 from environment_selection
 where IndicatorName ilike 'CO2%'
-group by 2,1
+group by 1
 having ( max(Value) - min(Value) ) / max(case when Value != 0 then Value end) notnull
 order by 7 desc
