@@ -36,14 +36,72 @@ where CountryName = 'China' -- country
 group by 1, 2
 ----------------------
 
+--created more complex and I believe more informative select
+
 select countryname, IndicatorName,
-       avg(Value),
-       min(Value) ,
-       max(Value) ,
-        ( max(Value) -min(Value) ) difference,
-       stddev(Value),
-       variance(value)
+    avg(Value),
+    min(Value) ,
+    max(Value) ,
+    ( max(Value) - min(Value) ) as difference,
+    ( max(Value) - min(Value) ) / max(case when Value != 0 then Value end),
+                                                --used case not to have situations with division by zero
+    stddev(Value),
+    variance(value)
 from environment_selection
 --where IndicatorName ilike 'Electricity production from renewable sources, excluding hydroelectric (kWh)'
 group by 1, 2
-order by 5 desc
+order by 6 desc
+
+--difference between min and max divided by max, shows the percentage change,
+-- as we can see, nearly whole region had huge boom of electricity production from renewable soursec
+
+select countryname, IndicatorName,
+    avg(Value),
+    min(Value) ,
+    max(Value) ,
+    ( max(Value) - min(Value) ) as difference,
+    ( max(Value) - min(Value) ) / max(case when Value != 0 then Value end),
+                                                --used case not to have situations with division by zero
+    stddev(Value),
+    variance(value)
+from environment_selection
+where IndicatorName ilike 'Electricity production from renewable sources, excluding hydroelectric (kWh)'
+group by 1, 2
+order by 6 desc
+--------------------
+
+--change of urban population also is one of indicators that have biggest growth
+-- let's check if it matters by creatign corelation with general population growth
+
+select countryname, IndicatorName,
+    avg(Value),
+    min(Value) ,
+    max(Value) ,
+    ( max(Value) - min(Value) ) as difference,
+    ( max(Value) - min(Value) ) / max(case when Value != 0 then Value end),
+                                                --used case not to have situations with division by zero
+    stddev(Value),
+    variance(value)
+from environment_selection
+where IndicatorName = 'Urban population'
+group by 1, 2
+order by 6 desc
+
+--------------------
+
+--CO2 emissions are growing rapidly for the Asian countries
+
+select countryname, IndicatorName,
+    avg(Value),
+    min(Value) ,
+    max(Value) ,
+    ( max(Value) - min(Value) ) as difference,
+    ( max(Value) - min(Value) ) / max(case when Value != 0 then Value end),
+                                                --used case not to have situations with division by zero
+    stddev(Value),
+    variance(value)
+from environment_selection
+where IndicatorName ilike 'CO2%'
+group by 2,1
+having ( max(Value) - min(Value) ) / max(case when Value != 0 then Value end) notnull
+order by 7 desc
