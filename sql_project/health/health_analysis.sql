@@ -153,3 +153,120 @@ order by pop_diff_raw desc ;
 
  Sounds familiar?
  */
+
+--Health expenditure for year and countries with basics statistics info
+select * from health_expenditure
+right join
+(select countryname,
+avg(case when IndicatorName like 'Health expenditure, total (% of GDP)' then Value end) avg,
+       min(case when IndicatorName like 'Health expenditure, total (% of GDP)' then Value end) min,
+       max(case when IndicatorName like 'Health expenditure, total (% of GDP)' then Value end) max,
+       (max(case when indicatorname like 'Health expenditure, total (% of GDP)' then Value end) -
+       min(case when indicatorname like 'Health expenditure, total (% of GDP)' then Value end))
+       diff_raw,
+       stddev(case when indicatorname like 'Health expenditure, total (% of GDP)' then Value end)::int std_dev,
+       stddev(case when indicatorname like 'Health expenditure, total (% of GDP)' then Value end)::numeric /
+       avg(case when indicatorname like 'Health expenditure, total (% of GDP)' then Value end) stddev_to_avg from first_selection
+group by countryname) additional_info on countryname = "CountryName"
+order by avg desc ;
+
+--Comment: Smallest countries spend big part of GDP on health care.
+
+-- Raw numbers:
+-- As above but incicator showing expediture in US dollars.
+
+select * from health_expenditure
+right join
+(select countryname,
+avg(case when IndicatorName like 'Health expenditure per capita (current US$)' then Value end) avg,
+       min(case when IndicatorName like 'Health expenditure per capita (current US$)' then Value end) min,
+       max(case when IndicatorName like 'Health expenditure per capita (current US$)' then Value end) max,
+       (max(case when indicatorname like 'Health expenditure per capita (current US$)' then Value end) -
+       min(case when indicatorname like 'Health expenditure per capita (current US$)' then Value end))
+       diff_raw,
+       stddev(case when indicatorname like 'Health expenditure per capita (current US$)' then Value end)::int std_dev,
+       stddev(case when indicatorname like 'Health expenditure per capita (current US$)' then Value end)::numeric /
+       avg(case when indicatorname like 'Health expenditure per capita (current US$)' then Value end) stddev_to_avg from first_selection
+group by countryname) additional_info on countryname = "CountryName"
+order by avg desc ;
+
+-- COMMENTS:
+-- The most developed countries spend the most amount of US $ on healthcare
+-- Better not get sick in countries like Bangladesh, Nepal, Pakistan, Cambodia, India, Myanmar.
+
+-- Questions to be answered:
+--    1. How population change impacts health expenditure?
+
+-- Exploring correlations
+-- between 'Population growth (annual %)' and 'Health expenditure, total (% of GDP)' for different countries and pop_growth total for different countries in region.
+
+select distinct * from (
+select fs.countryname,
+        round(sum(fs.Value) over (partition by fs.countryname),5) pop_growth_total,
+       corr(fs.Value, health.val) over (partition by fs.countryname) corr_between_pop_growth_and_health_exp
+from first_selection fs
+left join (select countryname, Year, Value val
+    from first_selection
+    where IndicatorName = 'Health expenditure, total (% of GDP)') health
+    on (health.countryname = fs.countryname and health.Year = fs.Year)
+where fs.IndicatorName = 'Population growth (annual %)') corr_val
+order by pop_growth_total desc ;
+
+-- Comment: This says nothing interesting, Lets check raw numbers.
+
+-- Exploring correlations between value of 'Population, total' and 'Health expenditure, total (% of GDP)' in reference to avg_population for different countries in region.
+select distinct * from (
+select fs.countryname,
+        round(avg(fs.Value) over (partition by fs.countryname),5) avg_pop,
+       corr(fs.Value, health.val) over (partition by fs.countryname) corr_between_total_population_and_health_exp
+from first_selection fs
+left join (select countryname, Year, Value val
+    from first_selection
+    where IndicatorName = 'Health expenditure, total (% of GDP)') health
+    on (health.countryname = fs.countryname and health.Year = fs.Year)
+where fs.IndicatorName = 'Population, total') corr_val
+        --order by max_pop_total desc
+order by avg_pop desc
+;
+--Comment:
+-- Overall strong positive correlation for bigger countries (also for most countries if data is available)
+
+/* Questions to be answered:
+   ..
+   2. Which countries expend most/least money amount on their inhabitants?
+
+   Indicator involved:
+   - Health expenditure per capita (current US$)
+   - Population, total
+*/
+
+-- Exploring correlations between value of 'Population, total' and 'Health expenditure per capita (current US$)' in reference to avg_pop for different countries in region.
+
+select distinct * from (
+select fs.countryname,
+        avg(fs.Value) over (partition by fs.countryname)::integer avg_pop,
+       corr(fs.Value, health.val) over (partition by fs.countryname) corr_total_pop_and_health_exp_per_capita_in_US_dol
+from first_selection fs
+left join (select countryname, Year, Value val
+    from first_selection
+    where IndicatorName = 'Health expenditure per capita (current US$)') health
+    on (health.countryname = fs.countryname and health.Year = fs.Year)
+where fs.IndicatorName = 'Population, total') corr_val
+order by avg_pop desc;
+
+-- Strong correlation for all countries, so all countries spend more US $ on health for citizens year by year. :)
+
+-- Exploring correlations between value of 'Population, total' and 'Health expenditure per capita (current US$)' in reference to avg_health_exp_per_capita for different countries in region.
+select distinct * from (
+select fs.countryname,
+        avg(health.val) over (partition by fs.countryname)::integer avg_health_exp_per_capita,
+       corr(fs.Value, health.val) over (partition by fs.countryname) corr_total_pop_and_health_exp_per_capita_in_US_dol
+from first_selection fs
+left join (select countryname, Year, Value val
+    from first_selection
+    where IndicatorName = 'Health expenditure per capita (current US$)') health
+    on (health.countryname = fs.countryname and health.Year = fs.Year)
+where fs.IndicatorName = 'Population, total') corr_val
+order by avg_health_exp_per_capita desc;
+
+-- Similar as in last selection.
