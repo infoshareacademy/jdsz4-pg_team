@@ -270,3 +270,87 @@ where fs.IndicatorName = 'Population, total') corr_val
 order by avg_health_exp_per_capita desc;
 
 -- Similar as in last selection.
+
+/* Questions to be answered:
+...
+   3. If water source improvement prevents children and infants from death?
+
+      Indicator involved:
+-- 6 Improved water source (% of population with access) [811]
+-- 11 Number of infant deaths [756]
+-- 12 Number of under-five deaths [756]
+ */
+
+-- Exploring correlations between value of 'Improved water source' and 'Number of infant deaths' in reference to avg_bum_infants_dead a for different countries in region.
+select distinct * from (
+select fs.countryname,
+        avg(death.val) over (partition by fs.countryname)::integer avg_no_infants_death,
+       corr(fs.Value, death.val) over (partition by fs.countryname) corr_improved_wt_source_vs_infant_death
+from first_selection fs
+left join (select countryname, Year, Value val
+    from first_selection
+    where IndicatorName = 'Number of infant deaths') death
+    on (death.countryname = fs.countryname and death.Year = fs.Year)
+where fs.IndicatorName = 'Improved water source (% of population with access)') corr_val
+order by avg_no_infants_death desc;
+
+-- Strong negative correlation between these indicators, so if water is accessible in different areas, the risk of infant death goes down.
+-- Positive correlation can be seen in war zones (Afghanistan), isolated countries (North Korea), and on small countries (lack of good health care).
+
+-- Exploring correlations between value of 'Improved water source' and 'Number of under-five deaths' in reference to avg_no_child_dead a for different countries in region.
+select distinct * from (
+select fs.countryname,
+        avg(death.val) over (partition by fs.countryname)::integer avg_no_child_death,
+       corr(fs.Value, death.val) over (partition by fs.countryname) corr_improved_wt_source_vs_child_death
+from first_selection fs
+left join (select countryname, Year, Value val
+    from first_selection
+    where IndicatorName = 'Number of under-five deaths') death
+    on (death.countryname = fs.countryname and death.Year = fs.Year)
+where fs.IndicatorName = 'Improved water source (% of population with access)') corr_val
+order by avg_no_child_death desc;
+
+-- Same as above
+-- Strong negative correlation between these indicators, so if water is accessible in different areas, the risk of infant death goes down.
+-- Positive correlation can be seen in war zones (Afghanistan), isolated countries (North Korea), and on small countries (lack of good health care).
+
+/* Questions to be answered:
+...
+   4. How life expectancy for men and female corresponds to health expenditure?
+
+      Indicator involved:
+   - Health expenditure per capita (current US$)
+-- - Life expectancy at birth, female (years) [804]
+-- - Life expectancy at birth, male (years) [804]
+*/
+
+-- Exploring correlations between value of 'Health expenditure per capita (current US$)' and 'Life expectancy at birth, female (years)' in reference to avg_life_exp_fem for different countries in region.
+select distinct * from (
+select fs.countryname,
+        avg(life_exp.val) over (partition by fs.countryname)::integer avg_life_exp_fem,
+       corr(fs.Value, life_exp.val) over (partition by fs.countryname) corr_health_exp_per_capita_in_US_dol_vs_life_exp_fem
+from first_selection fs
+left join (select countryname, Year, Value val
+    from first_selection
+    where IndicatorName = 'Life expectancy at birth, female (years)') life_exp
+    on (life_exp.countryname = fs.countryname and life_exp.Year = fs.Year)
+where fs.IndicatorName = 'Health expenditure per capita (current US$)') corr_val
+order by avg_life_exp_fem desc;
+
+--Strong correlation - the longer female citizens are expected to live, the higher health expenditure per capita.
+
+-- Exploring correlations between value of 'Health expenditure per capita (current US$)' and 'Life expectancy at birth, male (years)' in reference to avg_life_exp_fem for different countries in region.
+select distinct * from (
+select fs.countryname,
+        avg(life_exp.val) over (partition by fs.countryname)::integer avg_life_exp_fem,
+       corr(fs.Value, life_exp.val) over (partition by fs.countryname) corr_health_exp_per_capita_in_US_dol_vs_life_exp_fem
+from first_selection fs
+left join (select countryname, Year, Value val
+    from first_selection
+    where IndicatorName = 'Life expectancy at birth, male (years)') life_exp
+    on (life_exp.countryname = fs.countryname and life_exp.Year = fs.Year)
+where fs.IndicatorName = 'Health expenditure per capita (current US$)') corr_val
+order by avg_life_exp_fem desc;
+
+--Strong correlation - the longer male citizens are expected to live, the higher health expenditure per capita.
+-- This correlation is not as strong as for female citizens. :)
