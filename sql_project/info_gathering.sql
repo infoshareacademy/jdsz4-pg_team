@@ -11,6 +11,20 @@ We decided to check changes in different indicators for two regions:
 /*GENERAL INFO:
 - 43 countries x 21 years for complete indicator info == 903 points */
 
+/*TOPICS RELATED TO Environment
+
+  Interesting indicators:
+--1 Electricity production from renewable sources, excluding hydroelectric (kWh)
+--2 change of urban population
+--3 CO2 emissions
+--4 Electric power consumption (kWh per capita)
+
+--nearly whole region had huge boom of electricity production from renewable sources
+--CO2 emission is growing rapidly for the Asian countries
+  it grew over 70% for 113 of records, that is 'country - indicator' pairs
+--change of urban population also is one of indicators that have biggest growth
+
+ */
 
 /*TOPICS RELATED TO HEALTH:
 
