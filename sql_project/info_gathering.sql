@@ -11,6 +11,20 @@ We decided to check changes in different indicators for two regions:
 /*GENERAL INFO:
 - 43 countries x 21 years for complete indicator info == 903 points */
 
+/*TOPICS RELATED TO Environment
+
+  Interesting indicators:
+--1 Electricity production from renewable sources, excluding hydroelectric (kWh)
+--2 change of urban population
+--3 CO2 emissions
+--4 Electric power consumption (kWh per capita)
+
+--nearly whole region had huge boom of electricity production from renewable sources
+--CO2 emission is growing rapidly for the Asian countries
+  it grew over 70% for 113 of records, that is 'country - indicator' pairs
+--change of urban population also is one of indicators that have biggest growth
+
+ */
 
 /*TOPICS RELATED TO HEALTH:
 
@@ -76,3 +90,35 @@ in reference to avg_life_exp_fem for different countries in region:
 -- Strong correlation - the longer citizens are expected to live, the higher health expenditure per capita.
 -- This correlation for male is not as strong as for female citizens (about 0.7 vs 0.8)
 */
+
+/*TOPICS RELATED TO INFRASTRUCTURE
+
+  Interesting indicators [no_records]:
+--1 Air transport, freight (million ton-km) [618]
+--2 Air transport, passengers carried [651] 
+--3 Container port traffic (TEU: 20 foot equivalent units) [189] 
+--4 Fixed broadband subscriptions (per 100 people) [294]
+--5 Fixed telephone subscriptions (per 100 people) [860]
+--6 Internet users (per 100 people) [675]
+--7 Liner shipping connectivity index (maximum value in 2004 = 100) [238]
+--8 Mobile cellular subscriptions (per 100 people) [848]
+--9 Pump price for diesel fuel (US$ per liter) [205]
+--10 Pump price for gasoline (US$ per liter) [206]
+--11 Quality of port infrastructure, WEF (1=extremely underdeveloped to 7=well developed and efficient by international standards) [78]
+--12 Rail lines (total route-km) [256]
+--13 Railways, goods transported (million ton-km) [263]
+--14 Railways, passengers carried (million passenger-km) [269]
+
+Conclusions:
+- About half of interesting indicators don't have enough records.
+
+=========================================================== 
+
+Questions to be answered:
+   1. Passengers and freight in air transport, container port traffic and railways.
+   2. Length of rail lines.
+   3. Liner shipping connectivity vs quality of port infrastructure.
+   4. Gasoline vs diesel price.
+   5. Number of internet, phone and mobile phone users.
+   6. Other indicators (R&D, high-tech and ICT goods import/export)?
+ */

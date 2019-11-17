@@ -144,4 +144,3 @@ select countryname, IndicatorName,
         order by 7 desc
 
 --created supporting table
-git sta
