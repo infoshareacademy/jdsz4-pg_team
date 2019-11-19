@@ -1,0 +1,3 @@
+birth_rate.csv --> birth_rate_no_nulls.csv
+
+Usunięto dane dla American Samoa oraz Marshall Islands, ze względu na niepełną/ niewielką liczbę rekordów.
