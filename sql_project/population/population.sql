@@ -26,12 +26,18 @@ create table population_growth_ as
 select distinct countryname as Kraj, avg(value) over (partition by countryname) as Sredni_wzrost
 from population_growth
 
-
-select p.CountryName, p.Year, corr(p.value, abc.value) over (partition by p.CountryName order by p.Year)
-from population_over_65 p
-join (SELECT CountryName, year, value
-    FROM   first_selection
-    WHERE IndicatorName = 'GDP per capita (current US$)'
-        and Value notnull
-    ) as abc on p.CountryName = abc.CountryName
-order by 3 desc
+create table population_diff_2010_1990 as
+select A.year, A. countryname, (A.value - B.value)
+from (
+     select year, countryname, value
+     from population_total
+     where year = '2010'
+     order by value desc
+     ) as A
+join (
+     select year, countryname, value
+     from population_total
+     where year = '1990'
+     order by value desc
+     ) as B on A.countryname = B.countryname
+order by 3 desc;
