@@ -1,0 +1,15 @@
+create table life_indicators as
+select countryname,indicatorname,year,value
+from first_selection
+where indicatorname = 'Birth rate, crude (per 1,000 people)'
+or indicatorname = 'Life expectancy at birth, female (years)'
+or indicatorname = 'Life expectancy at birth, male (years)'
+or indicatorname = 'Life expectancy at birth, total (years)'
+or indicatorname = 'Health expenditure, total (% of GDP)'
+or indicatorname = 'Health expenditure, private (% of GDP)'
+or indicatorname = 'Health expenditure, public (% of GDP)'
+or indicatorname = 'Health expenditure per capita (current US$)'
+or indicatorname = 'GDP per capita (current US$)'
+or indicatorname = 'Population, total'
+and year between 1990 and 2010
+order by indicatorname,countryname,year
