@@ -1,3 +1,4 @@
+trainer_id,place,pokename,pokelevel,type1,type2,hp,maxhp,attack,defense,spatk,spdef,speed
 0,0,Smeargle,60,Normal,None,157,157,50,68,50,80,116
 1,0,Smeargle,30,Normal,None,83,83,27,36,27,42,60
 2,0,Wailord,57,Water,None,281,281,128,76,128,76,93
