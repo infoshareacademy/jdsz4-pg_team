@@ -1,3 +1,0 @@
-table,Trainers,Trainers,2,"CREATE TABLE Trainers (trainerID int PRIMARY KEY, trainername text)"
-index,sqlite_autoindex_Trainers_1,Trainers,4,
-table,Pokemon,Pokemon,3,"CREATE TABLE Pokemon (trainerID int, place int, pokename text, pokelevel int, type1 int, type2 int, hp int, maxhp int, attack int, defense int, spatk int, spdef int, speed int,FOREIGN KEY (trainerID) REFERENCES Trainers(trainerID))"
