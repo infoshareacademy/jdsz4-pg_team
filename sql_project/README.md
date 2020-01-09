@@ -3,7 +3,7 @@ World Development Indicators - Biznes pieluch jednorazowych w krajach Azji połu
 
 Celem analizy jest wybór najlepszych trzech krajów dla rozwoju biznesu pieluch jednorazowych dla dzieci oraz osób starszych.
 
-# Techset:
+# Techstack:
 - PostgreSQL
 - Tableau (wizualizacja)
 - Google Docs do wykonania prezetacji
