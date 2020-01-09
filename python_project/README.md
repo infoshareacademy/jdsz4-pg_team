@@ -14,4 +14,4 @@ https://www.kaggle.com/lrcusack/pokemontrainers#database.sqlite
 * Agnieszka
 * Jakub
 * Maciek
->>>>>>> 5141d00e1de89cbb6f0946f66be7af638a87e1dd
+
