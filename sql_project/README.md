@@ -6,7 +6,7 @@ Celem analizy jest wybór najlepszych trzech krajów dla rozwoju biznesu pieluch
 # Techset:
 - PostgreSQL
 - Tableau (wizualizacja)
-- Google Docs to wykonania prezetacji
+- Google Docs do wykonania prezetacji
 
 # Dataset: 
 https://www.kaggle.com/worldbank/world-development-indicators
