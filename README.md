@@ -1,6 +1,6 @@
 # Opis projektu SQL:
 
-World Development Indicators - Biznes pieluch jednorazowych w krajach Azji południowo-wschodniej i na pacyfiku.
+World Development Indicators - Biznes pieluch jednorazowych w krajach Azji południowo-wschodniej i na Pacyfiku.
 
 # Dataset: 
 https://www.kaggle.com/worldbank/world-development-indicators
