@@ -1,6 +1,12 @@
 # Opis projektu:
+World Development Indicators - Biznes pieluch jednorazowych w krajach Azji południowo-wschodniej i na Pacyfiku.
 
-World Development Indicators - Najlepsi z najlepszych i najgorsi z najgorszych - czyli państwa/regiony które w danych dziedzinach w niedługim czasie stały się potentatami lub popadły w ruinę
+Celem analizy jest wybór najlepszych trzech krajów dla rozwoju biznesu pieluch jednorazowych dla dzieci oraz osób starszych.
+
+# Techset:
+- PostgreSQL
+- Tableau (wizualizacja)
+- Google Docs to wykonania prezetacji
 
 # Dataset: 
 https://www.kaggle.com/worldbank/world-development-indicators
