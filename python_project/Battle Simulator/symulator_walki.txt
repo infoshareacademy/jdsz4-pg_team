@@ -1,0 +1,30 @@
+
+if speed A > speed B
+
+	A atakuje B
+	atak pokemona A = wartosc ataku pokemona A - obrona pokemona B
+	zycie pokemona B = if atak pokemona A > 0 
+		      zycie pokemona B - atak pokemona A
+
+	B atakuje A 
+	atak pokemona B =  wartosc ataku pokemona B - obrona pokemona A
+	zycie pokemona A = if atak pokemona B > 0 
+		      zycie pokemona A - atak pokemona B
+
+else speed B > speed A
+
+	B atakuje A 
+	atak pokemona B =  wartosc ataku pokemona B - obrona pokemona A
+	zycie pokemona A = if atak pokemona B > 0 
+		      zycie pokemona A - atak pokemona B
+
+	A atakuje B
+	atak pokemona A = wartosc ataku pokemona A - obrona pokemona B
+	zycie pokemona B = if atak pokemona A > 0 
+		      zycie pokemona B - atak pokemona A
+
+
+
+
+
+
