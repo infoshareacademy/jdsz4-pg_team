@@ -2,26 +2,41 @@
 if speed A > speed B
 
 	A atakuje B
-	atak pokemona A = wartosc ataku pokemona A - obrona pokemona B
+	dmg pokemona A = wartosc ataku pokemona A - obrona pokemona B * eff
 	zycie pokemona B = if atak pokemona A > 0 
 		      zycie pokemona B - atak pokemona A
 
 	B atakuje A 
-	atak pokemona B =  wartosc ataku pokemona B - obrona pokemona A
+	atak pokemona B =  wartosc ataku pokemona B - obrona pokemona A * eff
 	zycie pokemona A = if atak pokemona B > 0 
 		      zycie pokemona A - atak pokemona B
 
 else speed B > speed A
 
 	B atakuje A 
-	atak pokemona B =  wartosc ataku pokemona B - obrona pokemona A
+	atak pokemona B =  (wartosc ataku pokemona B - obrona pokemona A) * eff 
 	zycie pokemona A = if atak pokemona B > 0 
 		      zycie pokemona A - atak pokemona B
 
 	A atakuje B
-	atak pokemona A = wartosc ataku pokemona A - obrona pokemona B
+	atak pokemona A = wartosc ataku pokemona A - obrona pokemona B * eff
 	zycie pokemona B = if atak pokemona A > 0 
 		      zycie pokemona B - atak pokemona A
+
+
+tkintet - frontend
+
+
+speed_a
+name_a
+hp_a
+def_a
+level_a
+type_a
+eff_a
+
+
+
 
 
 
