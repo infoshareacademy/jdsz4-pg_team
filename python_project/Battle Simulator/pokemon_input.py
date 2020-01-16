@@ -3,7 +3,7 @@ def pokemonA():
     df_pokemons = pd.read_csv('main_Pokemon.csv')
     global name_a, level_a, speed_a, hp_a, def_a, type_a
     while True:
-        print('Enter name of pokemon A.')
+        print('Enter name of Pokemon A.')
         name_a = str(input()).capitalize()
         if name_a in list(df_pokemons['pokename']):
             while True:
@@ -29,7 +29,7 @@ def pokemonB():
     df_pokemons = pd.read_csv('main_Pokemon.csv')
     global name_b,level_b,speed_b
     while True:
-        print('Enter name of pokemon B.')
+        print('Enter name of Pokemon B.')
         name_b = str(input()).capitalize()
         if name_b in list(df_pokemons['pokename']):
             while True:
