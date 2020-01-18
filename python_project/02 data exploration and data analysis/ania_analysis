@@ -1,13 +1,4 @@
 liczba pokemonów: 28 804
-liczba unikalnych trainer_id main_pokemon: 11 443
-liczba unikalnych trainerid w main_trainers: 11 860
-
-wniosek: tabela z pokemonami nie zawiera wszystkich trainer_id
-
-liczba unikalnych trainername w main_trainers: 4 347
-
-wniosek: jeden trener może mieć kilka id, należy połączyć obie tabele po trainer_id żeby uwzględnić trainername
-
 
 
 typy pokemonów wraz z liczebnością:
@@ -81,7 +72,7 @@ wniosek: avg_pokelevel nic nie wnosi do naszej analizy
 
 
 
-podsumowanie: pomyśleć mad kierunkiem dokładniejszej analizy...
+podsumowanie: pomyśleć nad kierunkiem dokładniejszej analizy...
 
 
 
