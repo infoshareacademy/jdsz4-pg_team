@@ -1,4 +1,31 @@
-eff_tab = [ ('Bug', 'Bug', 1), ('Bug', 'Dark', 2), ('Bug', 'Dragon', 1), ('Bug', 'Electric', 1), ('Bug', 'Fairy', 0.5), 
+def create_pokemon():
+    import pandas as pd
+    df_pokemons = pd.read_csv('main_Pokemon.csv')
+    while True:
+        print('Enter name of Pokemon.')
+        name = str(input()).capitalize()
+        if name in list(df_pokemons['pokename']):
+            while True:
+                print("Enter this {}'s level.".format(name))
+                level = input()
+                try:
+                    level = int(level)
+                    speed = int(df_pokemons[(df_pokemons['pokename'] == name) & (df_pokemons['pokelevel'] == level)]['speed'].mean())
+                    hp = int(df_pokemons[(df_pokemons['pokename'] == name) & (df_pokemons['pokelevel'] == level)]['hp'].mean())
+                    att = int(df_pokemons[(df_pokemons['pokename'] == name) & (df_pokemons['pokelevel'] == level)]['attack'].mean())
+                    defense = int(df_pokemons[(df_pokemons['pokename'] == name) & (df_pokemons['pokelevel'] == level)]['defense'].mean())
+                    type1 = str(df_pokemons[(df_pokemons['pokename'] == name) & (df_pokemons['pokelevel'] == level)]['type1'].unique()[0])
+                    print('{} on level {}: \nType = {} \nHP = {} \nDefense = {} \nSpeed = {}'.format(name, level, type1, hp, defense, speed))
+                    return type1, name, level, speed, hp, defense, att
+                except ValueError:
+                    print("Oops! I don't think we got {} on level {} is in the archive.\nWould you like to choose other Pokemon?".format(name, level))
+                    answer = input().capitalize()
+                    if answer == 'Yes':
+                        break
+        else:
+            print("Oops! I don't think we got such Pokemon archive.")
+
+eff_tab = [ ('Bug', 'Bug', 1), ('Bug', 'Dark', 2), ('Bug', 'Dragon', 1), ('Bug', 'Electric', 1), ('Bug', 'Fairy', 0.5),
            ('Bug', 'Fighting', 0.5), ('Bug', 'Fire', 0.5), ('Bug', 'Flying', 0.5), ('Bug', 'Ghost', 0.5), ('Bug', 'Grass', 2), 
            ('Bug', 'Ground', 1), ('Bug', 'Ice', 1), ('Bug', 'Normal', 1), ('Bug', 'Poison', 0.5), ('Bug', 'Psychic', 2), 
            ('Bug', 'Rock', 1), ('Bug', 'Steel', 0.5), ('Bug', 'Water', 1), ('Dark', 'Bug', 1), ('Dark', 'Dark', 0.5), 
@@ -112,21 +139,24 @@ def fight(poke_a, poke_b):
                 else:
                     (hp_b, hp_a, punch_b, punch_a) = punch(type_b, hp_b, def_b, att_b, type_a, hp_a, def_a, att_a)
         runda = runda + 1
-        print('Runda nr:', runda,'\n','\t', name_a, 'zadał cios:', punch_a, name_b, 'zadał cios:', punch_b)
+        print('Round:', runda,'\n','\t', name_a, 'attacks with strength:', punch_a, name_b, 'attacks with strength:', punch_b)
         print('\t', name_a, 'HP:', hp_a, name_b, 'HP', hp_b)
         if punch_a == 0 and punch_b == 0:
             break
     if hp_a > hp_b:
-        print(name_a, 'wygrał!')
+        print(name_a, 'won!')
     elif hp_b > hp_a:
-        print(name_b, 'wygrał!')
+        print(name_b, 'won!')
     else:
-        print('Remis')
+        print('Tie!')
 
 ####PRZYKŁADOWA WALKA#####
 #poke_a = ('Normal', 'Smeargle', 60, 108, 157, 68, 99)
-poke_a = ('Normal', 'Smeargle', 60, 116, 157, 68, 50)
-poke_b = ('Fire', 'Ninetales', 44, 108, 134, 86, 87)
+poke_a = create_pokemon()
+poke_b = create_pokemon()
+
+#poke_a = ('Normal', 'Smeargle', 60, 116, 157, 68, 50)
+#poke_b = ('Fire', 'Ninetales', 44, 108, 134, 86, 87)
 
 
 fight(poke_a,poke_b)
