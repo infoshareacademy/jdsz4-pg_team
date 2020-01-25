@@ -125,22 +125,16 @@ def fight():
                 else:
                     (hp_b, hp_a, punch_b, punch_a) = punch(type_b, hp_b, def_b, att_b, type_a, hp_a, def_a, att_a)
         runda = runda + 1
-        print('Round:', runda,'\n','\t', name_a, 'attacks with strength:', punch_a, name_b, 'attacks with strength:', punch_b)
-        print('\t', name_a, 'HP:', hp_a, name_b, 'HP', hp_b)
-        # results.configure(text=f'Round: {runda} \n \t {name_a} attacks with strength: {punch_a}, {name_b} attacks with strength: {punch_b}')
-        results.configure(text="ble")
-        # results.configure(text=f'\t {name_a} HP: {hp_a}, {name_b}, HP {hp_b}')
+        results.configure(text='Round: {} \n \t {} attacks with strength: {}, {} attacks with strength: {}'.format(runda,name_a,punch_a, name_b, punch_b))
+        results.configure(text='\t {} HP: {}, {}, HP {}'.format(name_a,hp_a,name_b,hp_b))
         if punch_a == 0 and punch_b == 0:
             break
     if hp_a > hp_b:
-        results.configure(text="ble")
-        # results.configure(text=f"{name_a} won!")
+        results.configure(text="{} won!".format(name_a))
     elif hp_b > hp_a:
-        results.configure(text="ble")
-        # results.configure(text=f"{name_b} won!")
+        results.configure(text="{} won!".format(name_b))
     else:
-        results.configure(text="ble")
-        # results.configure(text="Tie!")
+        results.configure(text="Tie!")
 
 def create_pokemon_b():
     global type_a, name_a, level_a, speed_a, hp_a, def_a, att_a
@@ -305,6 +299,19 @@ results.grid(row=0)
 
 
 
+dict_entry = Entry(root, text="What letter does the Pokemon you are looking for starts on?")
+dict_entry.grid(row=1)
+
+
+
+def pokemon_list():
+    df_pokemons = pd.read_csv('main_Pokemon.csv')
+    try:
+        s_letter = input().capitalize()
+        pokelist = df_pokemons[df_pokemons.pokename.str.startswith(s_letter)]["pokename"].unique()
+        (np.array(pokelist))
+    except ValueError:
+        print('I do not think we have any Pokemon which name start with letter {}.'.format(s_letter))
 
 root.mainloop()
 print(attack)

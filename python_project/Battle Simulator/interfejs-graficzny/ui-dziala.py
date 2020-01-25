@@ -1,8 +1,8 @@
-from tkinter import *
 import pandas as pd
 # from mechanika import *
 global type_a,  name_a, level_a, speed_a, hp_a, def_a, att_a
 global type_b,  name_b, level_b, speed_b, hp_b, def_b, att_b
+from tkinter import *
 
 eff_tab = [ ('Bug', 'Bug', 1), ('Bug', 'Dark', 2), ('Bug', 'Dragon', 1), ('Bug', 'Electric', 1), ('Bug', 'Fairy', 0.5),
            ('Bug', 'Fighting', 0.5), ('Bug', 'Fire', 0.5), ('Bug', 'Flying', 0.5), ('Bug', 'Ghost', 0.5), ('Bug', 'Grass', 2),
@@ -224,9 +224,9 @@ root = Tk()
 root.configure(background='azure')
 root.geometry('1200x1200')
 
-img = PhotoImage(file="pokemon-logo.png")
-canvas = Canvas(root,width = 1200, height = 400,background='azure')
-canvas.grid(row=0,columnspan=8)
+img = PhotoImage(file="pokemon-logo2.png")
+canvas = Canvas(root,width = 500, height = 200,background='azure')
+canvas.grid(row=0, column=1,columnspan=8)
 canvas.create_image(0,0, anchor=NW, image=img)
 
 frame1=Frame(root, width=500, height=550, background="azure")
