@@ -19,18 +19,15 @@ def create_pokemon_b():
                                       'defense'].mean())
                 type1 = str(df_pokemons[(df_pokemons['pokename'] == name) & (df_pokemons['pokelevel'] == level)][
                                     'type1'].unique()[0])
-                stats = Label(frame3,
-                                  text='{} on level {}: \nType = {} \nHP = {} \nDefense = {} \nSpeed = {}\nAttack = {}\n'.format(
+                stats_b.configure(text='{} on level {}: \nType = {} \nHP = {} \nDefense = {} \nSpeed = {}\nAttack = {}\n'.format(
                                       name, level, type1, hp, defense, speed, att), font=("Comic Sans", 15),background="azure")
-                stats.grid(row=8, column=1, columnspan=6, rowspan=6)
                 poke_b = tuple(type1, name, level, speed, hp, defense, att)
             except ValueError:
-                error = Label(frame3, text="Oops! I don't think we got such Pokemon archive.",
-                                  font=("Comic Sans", 20),background="azure")
-                error.grid(row=7, column=1)
+                stats_b.configure(text="Oops! I don't think we got such Pokemon archive.",
+                                  font=("Comic Sans", 15),background="azure")
     else:
-        my_label = Label(frame3, text="Oops! I don't think we got such Pokemon archive.", font=("Comic Sans", 15),background="azure")
-        my_label.grid(row=2, column=1)
+
+        stats_b.configure(text="Oops! I don't think we got such Pokemon archive.", font=("Comic Sans", 15),background="azure")
 
 
 def create_pokemon_a():
@@ -51,18 +48,15 @@ def create_pokemon_a():
                                       'defense'].mean())
                 type1 = str(df_pokemons[(df_pokemons['pokename'] == name) & (df_pokemons['pokelevel'] == level)][
                                     'type1'].unique()[0])
-                stats = Label(frame2,
-                                  text='{} on level {}: \nType = {} \nHP = {} \nDefense = {} \nSpeed = {}\nAttack = {}\n'.format(
-                                      name, level, type1, hp, defense, speed, att), font=("Comic Sans", 15),background="azure")
-                stats.grid(row=0, column=0, columnspan=6, rowspan=6)
+                stats.configure(text='{} on level {}: \nType = {} \nHP = {} \nDefense = {} \nSpeed = {}\nAttack = {}\n'.format(
+                                      name, level, type1, hp, defense, speed, att))
                 poke_a = tuple(type1, name, level, speed, hp, defense, att)
             except ValueError:
-                error = Label(frame2, text="Oops! I don't think we got such Pokemon archive.",
-                                  font=("Comic Sans", 20),background="azure")
-                error.grid(row=1, column=1)
+                stats.configure(text="Oops! I don't think we got such Pokemon archive.",
+                                  font=("Comic Sans", 15),background="azure")
     else:
-        my_label = Label(frame2, text="Oops! I don't think we got such Pokemon archive.", font=("Comic Sans", 15),background="azure")
-        my_label.grid(row=2, column=1)
+       stats.configure(text="Oops! I don't think we got such Pokemon archive.", font=("Comic Sans", 15),background="azure")
+
 
 
 
@@ -102,8 +96,8 @@ entry_pokelevel.grid(row=4)
 
 #statistics field
 
-stats = Label(frame2,background="azure")
-stats.grid(row=2,column=1, columnspan=6, rowspan=6)
+stats = Label(frame2,font=("Comic Sans", 15),background="azure")
+stats.grid(row=0, column=0, columnspan=6, rowspan=6, )
 
 #button starting function used to pull pokemon data from the csv
 
@@ -125,7 +119,7 @@ entry_pokelevel_b.grid(row=10)
 
 #statistics field
 
-stats_b = Label(frame3)
+stats_b = Label(frame3,font=("Comic Sans", 15),background="azure")
 stats_b.grid(row=7,column=1, columnspan=6, rowspan=6)
 
 #button starting function used to pull pokemon data from the csv
