@@ -3,7 +3,7 @@ import pandas as pd
 
 def create_pokemon_b():
     global poke_b
-    df_pokemons = pd.read_csv('/home/js/PycharmProjects/untitled/main_Pokemon.csv')
+    df_pokemons = pd.read_csv('main_Pokemon.csv')
     name = str(entry_pokename_b.get()).capitalize()
     if name in list(df_pokemons['pokename']):
             level = entry_pokelevel_b.get()
@@ -32,7 +32,7 @@ def create_pokemon_b():
 
 def create_pokemon_a():
     global poke_a
-    df_pokemons = pd.read_csv('/home/js/PycharmProjects/untitled/main_Pokemon.csv')
+    df_pokemons = pd.read_csv('main_Pokemon.csv')
     name = str(entry_pokename.get()).capitalize()
     if name in list(df_pokemons['pokename']):
             level = entry_pokelevel.get()
@@ -126,6 +126,8 @@ stats_b.grid(row=7,column=1, columnspan=6, rowspan=6)
 
 button_b = Button(root, text='Search',font=("Comic Sans", 15),command=create_pokemon_b)
 button_b.grid(row=11)
+
+
 
 
 root.mainloop()
