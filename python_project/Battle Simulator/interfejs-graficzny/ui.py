@@ -1,81 +1,75 @@
 from tkinter import *
-
+import pandas as pd
 
 def create_pokemon_b():
-    import pandas as pd
+    global poke_b
     df_pokemons = pd.read_csv('/home/js/PycharmProjects/untitled/main_Pokemon.csv')
-    while True:
-        name = str(entry_pokename_b.get()).capitalize()
-        if name in list(df_pokemons['pokename']):
-            while True:
-                level = entry_pokelevel_b.get()
-                try:
-                    level = int(level)
-                    speed = int(df_pokemons[(df_pokemons['pokename'] == name) & (df_pokemons['pokelevel'] == level)][
+    name = str(entry_pokename_b.get()).capitalize()
+    if name in list(df_pokemons['pokename']):
+            level = entry_pokelevel_b.get()
+            try:
+                level = int(level)
+                speed = int(df_pokemons[(df_pokemons['pokename'] == name) & (df_pokemons['pokelevel'] == level)][
                                     'speed'].mean())
-                    hp = int(df_pokemons[(df_pokemons['pokename'] == name) & (df_pokemons['pokelevel'] == level)][
+                hp = int(df_pokemons[(df_pokemons['pokename'] == name) & (df_pokemons['pokelevel'] == level)][
                                  'hp'].mean())
-                    att = int(df_pokemons[(df_pokemons['pokename'] == name) & (df_pokemons['pokelevel'] == level)][
+                att = int(df_pokemons[(df_pokemons['pokename'] == name) & (df_pokemons['pokelevel'] == level)][
                                   'attack'].mean())
-                    defense = int(df_pokemons[(df_pokemons['pokename'] == name) & (df_pokemons['pokelevel'] == level)][
+                defense = int(df_pokemons[(df_pokemons['pokename'] == name) & (df_pokemons['pokelevel'] == level)][
                                       'defense'].mean())
-                    type1 = str(df_pokemons[(df_pokemons['pokename'] == name) & (df_pokemons['pokelevel'] == level)][
+                type1 = str(df_pokemons[(df_pokemons['pokename'] == name) & (df_pokemons['pokelevel'] == level)][
                                     'type1'].unique()[0])
-                    stats = Label(root,
+                stats = Label(frame3,
                                   text='{} on level {}: \nType = {} \nHP = {} \nDefense = {} \nSpeed = {}\nAttack = {}\n'.format(
                                       name, level, type1, hp, defense, speed, att), font=("Comic Sans", 15),background="azure")
-                    stats.grid(row=8, column=1, columnspan=6, rowspan=6)
-                    global poke_b
-                    poke_b = tuple(type1, name, level, speed, hp, defense, att)
-
-                except ValueError:
-                    error = Label(root, text="Oops! I don't think we got such Pokemon archive.",
+                stats.grid(row=8, column=1, columnspan=6, rowspan=6)
+                poke_b = tuple(type1, name, level, speed, hp, defense, att)
+            except ValueError:
+                error = Label(frame3, text="Oops! I don't think we got such Pokemon archive.",
                                   font=("Comic Sans", 20),background="azure")
-                    error.grid(row=8, column=1)
-        else:
-            my_label = Label(root, text="Oops! I don't think we got such Pokemon archive.", font=("Comic Sans", 20),background="azure")
-            my_label.grid(row=2, column=1)
+                error.grid(row=7, column=1)
+    else:
+        my_label = Label(frame3, text="Oops! I don't think we got such Pokemon archive.", font=("Comic Sans", 15),background="azure")
+        my_label.grid(row=2, column=1)
 
 
 def create_pokemon_a():
-    import pandas as pd
+    global poke_a
     df_pokemons = pd.read_csv('/home/js/PycharmProjects/untitled/main_Pokemon.csv')
-    while True:
-        name = str(entry_pokename.get()).capitalize()
-        if name in list(df_pokemons['pokename']):
-            while True:
-                level = entry_pokelevel.get()
-                try:
-                    level = int(level)
-                    speed = int(df_pokemons[(df_pokemons['pokename'] == name) & (df_pokemons['pokelevel'] == level)][
+    name = str(entry_pokename.get()).capitalize()
+    if name in list(df_pokemons['pokename']):
+            level = entry_pokelevel.get()
+            try:
+                level = int(level)
+                speed = int(df_pokemons[(df_pokemons['pokename'] == name) & (df_pokemons['pokelevel'] == level)][
                                     'speed'].mean())
-                    hp = int(df_pokemons[(df_pokemons['pokename'] == name) & (df_pokemons['pokelevel'] == level)][
+                hp = int(df_pokemons[(df_pokemons['pokename'] == name) & (df_pokemons['pokelevel'] == level)][
                                  'hp'].mean())
-                    att = int(df_pokemons[(df_pokemons['pokename'] == name) & (df_pokemons['pokelevel'] == level)][
+                att = int(df_pokemons[(df_pokemons['pokename'] == name) & (df_pokemons['pokelevel'] == level)][
                                   'attack'].mean())
-                    defense = int(df_pokemons[(df_pokemons['pokename'] == name) & (df_pokemons['pokelevel'] == level)][
+                defense = int(df_pokemons[(df_pokemons['pokename'] == name) & (df_pokemons['pokelevel'] == level)][
                                       'defense'].mean())
-                    type1 = str(df_pokemons[(df_pokemons['pokename'] == name) & (df_pokemons['pokelevel'] == level)][
+                type1 = str(df_pokemons[(df_pokemons['pokename'] == name) & (df_pokemons['pokelevel'] == level)][
                                     'type1'].unique()[0])
-                    stats = Label(root,
+                stats = Label(frame2,
                                   text='{} on level {}: \nType = {} \nHP = {} \nDefense = {} \nSpeed = {}\nAttack = {}\n'.format(
                                       name, level, type1, hp, defense, speed, att), font=("Comic Sans", 15),background="azure")
-                    stats.grid(row=1, column=1, columnspan=6, rowspan=6)
-                    global poke_a
-                    poke_a = tuple(type1, name, level, speed, hp, defense, att)
-                except ValueError:
-                    error = Label(root, text="Oops! I don't think we got such Pokemon archive.",
+                stats.grid(row=0, column=0, columnspan=6, rowspan=6)
+                poke_a = tuple(type1, name, level, speed, hp, defense, att)
+            except ValueError:
+                error = Label(frame2, text="Oops! I don't think we got such Pokemon archive.",
                                   font=("Comic Sans", 20),background="azure")
-                    error.grid(row=1, column=1)
-        else:
-            my_label = Label(root, text="Oops! I don't think we got such Pokemon archive.", font=("Comic Sans", 20),background="azure")
-            my_label.grid(row=2, column=1)
+                error.grid(row=1, column=1)
+    else:
+        my_label = Label(frame2, text="Oops! I don't think we got such Pokemon archive.", font=("Comic Sans", 15),background="azure")
+        my_label.grid(row=2, column=1)
 
 
 
 
 root = Tk()
 root.configure(background='azure')
+root.geometry('1200x1200')
 
 img = PhotoImage(file="/home/js/PycharmProjects/untitled/pokemon-logo.png")
 canvas = Canvas(root,width = 1200, height = 400,background='azure')
@@ -83,13 +77,13 @@ canvas.grid(row=0,columnspan=8)
 canvas.create_image(0,0, anchor=NW, image=img)
 
 frame1=Frame(root, width=300, height=550, background="azure")
-frame1.grid(row=2, column=8, rowspan=12)
+frame1.grid(row=1, column=8, rowspan=12)
 
 frame2=Frame(root, width=300, height=250, background="azure")
-frame2.grid(row=2, column=3, rowspan=5)
+frame2.grid(row=1, column=2, rowspan=5)
 
 frame3=Frame(root, width=300, height=250, background="azure")
-frame3.grid(row=7, column=3, rowspan=6)
+frame3.grid(row=6, column=2, rowspan=6)
 
 my_label = Label(root, background="azure")
 my_label.grid(row=2, column=1)
@@ -108,7 +102,7 @@ entry_pokelevel.grid(row=4)
 
 #statistics field
 
-stats = Label(root,background="azure")
+stats = Label(frame2,background="azure")
 stats.grid(row=2,column=1, columnspan=6, rowspan=6)
 
 #button starting function used to pull pokemon data from the csv
@@ -131,7 +125,7 @@ entry_pokelevel_b.grid(row=10)
 
 #statistics field
 
-stats_b = Label(root)
+stats_b = Label(frame3)
 stats_b.grid(row=7,column=1, columnspan=6, rowspan=6)
 
 #button starting function used to pull pokemon data from the csv
