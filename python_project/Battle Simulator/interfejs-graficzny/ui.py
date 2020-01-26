@@ -119,20 +119,20 @@ def fight():
         runda = runda + 1
         # print('Round:', runda,'\n','\t', name_a, 'attacks with strength:', punch_a, name_b, 'attacks with strength:', punch_b)
         # print('\t', name_a, 'HP:', hp_a, name_b, 'HP', hp_b)
-        res=res+"\nRound " + str(runda) + "\n" + name_a + " (lv. "+ str(level_a)+")"+' attacks with strength: ' + str(punch_a) +"\n" + name_b + " (lv. " + str(level_b)+")" + ' attacks with strength: '+ str(punch_b)
-        res = res +'\n '+ name_a+ " (lv. "+ str(level_a)+ ")" +' HP: '+ str(hp_a)+ "\t" + name_b+ " (lv. "+ str(level_b)+ ")" + ' HP: '+ str(hp_b)
+        res=res+"\nRound " + str(runda) + "\n" + name_a + " (lv. "+ str(level_a)+")"+' attacks with strength: ' + str(punch_a) +". " + name_b + " (lv. " + str(level_b)+")" + ' attacks with strength: '+ str(punch_b)
+        res = res +'\n '+ name_a+ " (lv. "+ str(level_a)+ ")" +' HP: '+ str(hp_a)+ ". " + name_b+ " (lv. "+ str(level_b)+ ")" + ' HP: '+ str(hp_b)
         rundy.configure(text=res)
         if punch_a == 0 and punch_b == 0:
             break
     if hp_a > hp_b:
-        res1 = name_a +" on level "+ str(level_a)+ " won!"
+        res1 = "\t"+ name_a +" on level "+ str(level_a)+ " won!"
         results.configure(text=res1)
         # results.configure(text=f"{name_a} won!")
     elif hp_b > hp_a:
-        res1 = name_b + " on level " + str(level_b) +" won!"
+        res1 = "\t"+name_b + " on level " + str(level_b) +" won!"
         results.configure(text=res1)
     else:
-        results.configure(text="Tie!")
+        results.configure(text="\t Tie!")
     # results.configure(text=res)
 
 def create_pokemon_b():
@@ -291,7 +291,7 @@ button_b.grid(row=11)
 rundy = Label(frame1, font=("Comic Sans", 12),background="azure")
 rundy.grid(row=0)
 
-results = Label(frame1, font=("Comic Sans", 20, ), fg='red',background="azure")
-results.grid(row=2)
+results = Label(frame1, font=("Comic Sans", 20, ), fg='red', background="azure")
+results.grid(column=1,row=0)
 
 root.mainloop()
