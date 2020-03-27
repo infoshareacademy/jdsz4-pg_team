@@ -1,18 +1,34 @@
 Przykład 1
-Muchomor
+
+MUCHOMOR
 
 cap-shape: convex
 cap-surface: scaly
 cap-color: red
-bruises: no
-veil-color: white
+stalk-shape: enlarging
+ring-number: one
+habitat: woods
 
 
 Przykład 2
-Kurka
+
+PRAWDZIWEK
+
+cap-shape: convex
+cap-surface: smooth
+cap-color: brown
+stalk-shape: enlarging
+ring-number: none
+habitat: leaves/ paths
+
+
+Przykład 3
+
+KURKA
 
 cap-shape: sunken
 cap-surface: smooth
 cap-color: yellow
-bruises: no
-veil-color: yellow ???
+stalk-shape: tapering
+ring-number: none
+habitat: woods

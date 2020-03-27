@@ -24,20 +24,3 @@ red
 white
 yellow
  
-bruises: 
-bruises - czy sinieje pod naciskiem
-no
-
-veil-color: 
-brown
-orange
-white
-yellow
-
-Veils
-Some mushrooms have membranes referred to as veils that cover and protect the immature mushroom 
-or the immature lamellae. There are two types of veils.
-
-The membrane protecting the immature lamellae is called the partial veil 
-and the membrane covering the immature mushroom is called the universal veil. 
-As the mushroom matures these membranes break, sometimes leaving remnants on the stipe or the pileus.
