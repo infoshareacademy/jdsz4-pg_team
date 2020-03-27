@@ -1,0 +1,43 @@
+cap-shape: 
+bell - w kształcie dzwonu
+conical - stożkowy
+convex - wypukły
+flat - płaski
+knobbed - guzowaty
+sunken - wklęsły
+
+cap-surface: 
+fibrous - włóknisty
+grooves - bruzdowaty
+scaly - łuskowaty
+smooth - gładki
+
+cap-color: 
+brown
+buff - płowy (bladożółty z szarawym odcieniem)
+cinnamon
+gray
+green
+pink
+purple
+red
+white
+yellow
+ 
+bruises: 
+bruises - czy sinieje pod naciskiem
+no
+
+veil-color: 
+brown
+orange
+white
+yellow
+
+Veils
+Some mushrooms have membranes referred to as veils that cover and protect the immature mushroom 
+or the immature lamellae. There are two types of veils.
+
+The membrane protecting the immature lamellae is called the partial veil 
+and the membrane covering the immature mushroom is called the universal veil. 
+As the mushroom matures these membranes break, sometimes leaving remnants on the stipe or the pileus.

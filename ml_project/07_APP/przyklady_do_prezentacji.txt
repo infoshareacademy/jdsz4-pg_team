@@ -1,0 +1,18 @@
+Przykład 1
+Muchomor
+
+cap-shape: convex
+cap-surface: scaly
+cap-color: red
+bruises: no
+veil-color: white
+
+
+Przykład 2
+Kurka
+
+cap-shape: sunken
+cap-surface: smooth
+cap-color: yellow
+bruises: no
+veil-color: yellow ???
