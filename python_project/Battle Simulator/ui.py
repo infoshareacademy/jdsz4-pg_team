@@ -1,9 +1,9 @@
 import pandas as pd
-# from mechanika import *
 global type_a,  name_a, level_a, speed_a, hp_a, def_a, att_a
 global type_b,  name_b, level_b, speed_b, hp_b, def_b, att_b
 from tkinter import *
 
+#The type effectiveness chart
 eff_tab = [ ('Bug', 'Bug', 1), ('Bug', 'Dark', 2), ('Bug', 'Dragon', 1), ('Bug', 'Electric', 1), ('Bug', 'Fairy', 0.5),
            ('Bug', 'Fighting', 0.5), ('Bug', 'Fire', 0.5), ('Bug', 'Flying', 0.5), ('Bug', 'Ghost', 0.5), ('Bug', 'Grass', 2),
            ('Bug', 'Ground', 1), ('Bug', 'Ice', 1), ('Bug', 'Normal', 1), ('Bug', 'Poison', 0.5), ('Bug', 'Psychic', 2),
@@ -96,8 +96,6 @@ def punch(type_fast, hp_fast, def_fast, att_fast, type_slow, hp_slow, def_slow, 
 def fight():
     global type_a, name_a, level_a, speed_a, hp_a, def_a, att_a
     global type_b, name_b, level_b, speed_b, hp_b, def_b, att_b
-    # type_a, name_a, level_a, speed_a, hp_a, def_a, att_a = poke_a
-    # type_b, name_b, level_b, speed_b, hp_b, def_b, att_b = poke_b
     runda = 0
     res = ""
     while True:
@@ -117,8 +115,6 @@ def fight():
                 else:
                     (hp_b, hp_a, punch_b, punch_a) = punch(type_b, hp_b, def_b, att_b, type_a, hp_a, def_a, att_a)
         runda = runda + 1
-        # print('Round:', runda,'\n','\t', name_a, 'attacks with strength:', punch_a, name_b, 'attacks with strength:', punch_b)
-        # print('\t', name_a, 'HP:', hp_a, name_b, 'HP', hp_b)
         res=res+"\nRound " + str(runda) + "\n" + name_a + " (lv. "+ str(level_a)+")"+' attacks with strength: ' + str(punch_a) +". " + name_b + " (lv. " + str(level_b)+")" + ' attacks with strength: '+ str(punch_b)
         res = res +'\n '+ name_a+ " (lv. "+ str(level_a)+ ")" +' HP: '+ str(hp_a)+ ". " + name_b+ " (lv. "+ str(level_b)+ ")" + ' HP: '+ str(hp_b)
         rundy.configure(text=res)
@@ -127,13 +123,11 @@ def fight():
     if hp_a > hp_b:
         res1 = "\t"+ name_a +" on level "+ str(level_a)+ " won!"
         results.configure(text=res1)
-        # results.configure(text=f"{name_a} won!")
     elif hp_b > hp_a:
         res1 = "\t"+name_b + " on level " + str(level_b) +" won!"
         results.configure(text=res1)
     else:
         results.configure(text="\t Tie!")
-    # results.configure(text=res)
 
 def create_pokemon_b():
     global type_a, name_a, level_a, speed_a, hp_a, def_a, att_a
@@ -156,7 +150,6 @@ def create_pokemon_b():
                                     'type1'].unique()[0])
                 stats_b.configure(text='{} on level {}: \nType = {} \nHP = {} \nDefense = {} \nSpeed = {}\nAttack = {}\n'.format(
                                       name, level, type1, hp, defense, speed, att), font=("Comic Sans", 15),background="azure")
-                # poke_b = tuple(type1, name, level, speed, hp, defense, att)
                 type_b = type1
                 name_b = name
                 level_b = level
@@ -174,12 +167,9 @@ def create_pokemon_b():
 
         stats_b.configure(text="Oops! I don't think we got such Pokemon archive.", font=("Comic Sans", 15),background="azure")
 
-
 def create_pokemon_a():
     global type_a, name_a, level_a, speed_a, hp_a, def_a, att_a
     global type_b, name_b, level_b, speed_b, hp_b, def_b, att_b
-    # type_a,  name_a, level_a, speed_a, hp_a, def_a, att_a = poke_a
-    # type_b,  name_b, level_b, speed_b, hp_b, def_b, att_b = poke_b
     df_pokemons = pd.read_csv('main_Pokemon.csv')
     name = str(entry_pokename.get()).capitalize()
     if name in list(df_pokemons['pokename']):
@@ -198,9 +188,6 @@ def create_pokemon_a():
                                     'type1'].unique()[0])
                 stats.configure(text='{} on level {}: \nType = {} \nHP = {} \nDefense = {} \nSpeed = {}\nAttack = {}\n'.format(
                                       name, level, type1, hp, defense, speed, att))
-                # poke_a = tuple(type1, name, level, speed, hp, defense, att)
-                # poke_a = (type1, name, level, speed, hp, defense, att)
-                # poke_a =
                 type_a = type1
                 name_a = name
                 level_a = level
@@ -208,8 +195,6 @@ def create_pokemon_a():
                 hp_a = hp
                 def_a = defense
                 att_a = att
-                print(att_a, att)
-                # return attack
                 if att_a != 0 and attack_b != 0:
                     button_fight = Button(root, text='FIGHT!', font=("Comic Sans", 10),command=fight)
                     button_fight.grid(row=6, column=1)
