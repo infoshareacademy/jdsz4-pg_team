@@ -1,0 +1,78 @@
+liczba pokemonów: 28 804
+
+
+typy pokemonów wraz z liczebnością:
+Water		5723
+Normal		4368
+Grass		2420
+Bug		2292
+Fighting	1945
+Electric	1927
+Poison		1658
+Fire		1574
+Rock		1350
+Ground		1162
+Psychic		1127
+Dark		714
+Dragon		581
+Ghost		569
+Steel		547
+Ice		516
+Fairy		328
+Flying		3
+
+wniosek: celować w typy pokemonów, które pokonują gatunki o największej liczebności
+
+
+liczebność pokemonów na pokelevel=100, z podziałem na typy:
+Water		180
+Normal		131
+Electric	79
+Grass		77
+Fire		69
+Bug		65
+Fighting	59
+Ground		52
+Psychic		50
+Dragon		41
+Poison		40
+Rock		38
+Ghost		22
+Ice		22
+Steel		16
+Dark		13
+Fairy		9
+
+wniosek: czołówka wygląda bardzo podobnie, może tędy droga...
+
+
+
+typy pokemonów wraz ze średnim, minimalnym i maksymalnym pokelevel:
+type1		avg_pokelevel	min_pokelevel	max_pokelevel
+Flying		51.67		50		55
+Dragon		50.13		5		100
+Ice		48.26		5		100
+Steel		45.91		11		100
+Dark		44.9		4		100
+Ground		44.15		5		100
+Psychic		43.65		4		100
+Fire		41.52		3		100
+Ghost		41.46		5		100
+Fairy		41.2		5		100
+Rock		40.65		4		100
+Fighting	40.28		5		100
+Water		39.62		3		100
+Grass		39.61		3		100
+Electric	39.37		2		100
+Normal		39.23		2		100
+Poison		38.14		5		100
+Bug		36.79		2		100
+
+wniosek: avg_pokelevel nic nie wnosi do naszej analizy
+
+
+
+podsumowanie: pomyśleć nad kierunkiem dokładniejszej analizy...
+
+
+
